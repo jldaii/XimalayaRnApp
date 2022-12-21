@@ -3,6 +3,7 @@ import {Reducer} from 'redux';
 
 interface HomeState {
   num: number;
+  loading : boolean;
 }
 
 const action = {
@@ -11,11 +12,10 @@ const action = {
 
 interface homeModel extends Model {
   namespace: 'home';
-  state: {
-    num: number;
-  };
+  state: HomeState;
   reducers: {
     add: Reducer<HomeState>;
+    setStatus:Reducer<HomeState>;
   };
   // 异步 用于描述UI层
   //   effects: {
@@ -25,6 +25,7 @@ interface homeModel extends Model {
 
 const initialState = {
   num: 0,
+  loading : false,
 };
 
 function delay(timeout: number) {
@@ -35,9 +36,7 @@ function delay(timeout: number) {
 
 const homeModel: homeModel = {
   namespace: 'home',
-  state: {
-    num: 0,
-  },
+  state: initialState,
   reducers: {
     add(state, {payload}) {
       return {
@@ -45,13 +44,31 @@ const homeModel: homeModel = {
         num: state?.num + payload.num,
       };
     },
+    setStatus(state = initialState,{payload}){
+      return {
+        ...state,
+        loading:payload.loading,
+      }
+    }
   },
-  effects: {
+  effects: { 
     *asyncAdd({payload}, {call, put}) {
+      yield put({
+        type: 'setStatus',
+        payload : {
+          loading: true,
+        }
+      });
       yield call(delay, 3000);
       yield put({
         type: 'add',
         payload,
+      });
+      yield put({
+        type: 'setStatus',
+        payload : {
+          loading: false,
+        }
       });
     },
   },

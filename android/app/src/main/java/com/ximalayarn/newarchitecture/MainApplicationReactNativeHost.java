@@ -1,4 +1,4 @@
-package com.ximalayarnapp.newarchitecture;
+package com.ximalayarn.newarchitecture;
 
 import android.app.Application;
 import androidx.annotation.NonNull;
@@ -19,9 +19,9 @@ import com.facebook.react.fabric.CoreComponentsRegistry;
 import com.facebook.react.fabric.FabricJSIModuleProvider;
 import com.facebook.react.fabric.ReactNativeConfig;
 import com.facebook.react.uimanager.ViewManagerRegistry;
-import com.ximalayarnapp.BuildConfig;
-import com.ximalayarnapp.newarchitecture.components.MainComponentsRegistry;
-import com.ximalayarnapp.newarchitecture.modules.MainApplicationTurboModuleManagerDelegate;
+import com.ximalayarn.BuildConfig;
+import com.ximalayarn.newarchitecture.components.MainComponentsRegistry;
+import com.ximalayarn.newarchitecture.modules.MainApplicationTurboModuleManagerDelegate;
 import java.util.ArrayList;
 import java.util.List;
 

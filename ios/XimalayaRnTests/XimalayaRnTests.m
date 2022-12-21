@@ -7,11 +7,11 @@
 #define TIMEOUT_SECONDS 600
 #define TEXT_TO_LOOK_FOR @"Welcome to React"
 
-@interface XimalayaRnAppTests : XCTestCase
+@interface XimalayaRnTests : XCTestCase
 
 @end
 
-@implementation XimalayaRnAppTests
+@implementation XimalayaRnTests
 
 - (BOOL)findSubviewInView:(UIView *)view matching:(BOOL (^)(UIView *view))test
 {

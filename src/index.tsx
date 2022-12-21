@@ -1,10 +1,8 @@
 // import Navigator from "./navigator";
 // import Navigator from './navigator';
 // export default Navigator;
-
 import React from 'react';
 import {Provider} from 'react-redux';
-
 import Navigator from './navigator';
 import store from './config/dva';
 

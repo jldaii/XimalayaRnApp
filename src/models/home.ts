@@ -18,14 +18,19 @@ interface homeModel extends Model {
     add: Reducer<HomeState>;
   };
   // 异步 用于描述UI层
-//   effects: {
-//     asyncAdd: Effect;
-//   };
+  //   effects: {
+  //     asyncAdd: Effect;
+  //   };
 }
 
-
 const initialState = {
-    num : 0,
+  num: 0,
+};
+
+function delay(timeout: number) {
+  return new Promise(resolve => {
+    setTimeout(resolve, timeout);
+  });
 }
 
 const homeModel: homeModel = {
@@ -39,6 +44,15 @@ const homeModel: homeModel = {
         ...state,
         num: state?.num + payload.num,
       };
+    },
+  },
+  effects: {
+    *asyncAdd({payload}, {call, put}) {
+      yield call(delay, 3000);
+      yield put({
+        type: 'add',
+        payload,
+      });
     },
   },
 };

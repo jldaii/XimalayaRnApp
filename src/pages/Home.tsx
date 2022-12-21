@@ -34,6 +34,17 @@ class Home extends React.Component<IProps> {
     });
   };
 
+  asyncAdd = ()=>{
+    const {dispatch} = this.props;
+    dispatch({
+      type: 'home/asyncAdd',
+      payload: {
+        num: 2,
+      },
+    });
+  };
+
+
   render() {
     this.props;
     const {num} = this.props;
@@ -41,6 +52,7 @@ class Home extends React.Component<IProps> {
       <View>
         <Text>Home{num}</Text>
         <Button title="加" onPress={this.handleAdd}></Button>
+        <Button title="异步加" onPress={this.asyncAdd}></Button>
         <Button title="跳转到详情页" onPress={this.onPress}></Button>
       </View>
     );
